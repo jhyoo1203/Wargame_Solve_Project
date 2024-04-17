@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import wargame from 'image/wargame.png';
+import { Link } from 'react-router-dom';
 
 const Header = ({ setActiveMainContent }) => {
     const categories = ["워게임", "랭킹", "커뮤니티"];
@@ -22,13 +23,15 @@ const Header = ({ setActiveMainContent }) => {
                 <div className="flex">
                     </div>
                         <div className="flex mt-5 font-bold text-lg hover:cursor-pointer">
-                            <img
-                                src={wargame} alt="wargame" className="w-8 h-8 ml-5"
-                                onClick={() => {
-                                    setSelectedCategory("Main");
-                                    setActiveMainContent("Main");
-                                }}
-                            />
+                            <Link to="/" rel="noopener noreferrer">
+                                <img
+                                    src={wargame} alt="wargame" className="w-8 h-8 ml-5"
+                                    onClick={() => {
+                                        setSelectedCategory("Main");
+                                        setActiveMainContent("Main");
+                                    }}
+                                />
+                            </Link>
                             {categories.map((category, index) => (
                                 <p 
                                     key={index}
@@ -41,7 +44,11 @@ const Header = ({ setActiveMainContent }) => {
                                     {category}
                                 </p>
                             ))}
-                            <a href="https://jhyoo1203.github.io/DPR_For_Enterprise/" target="_blank" rel="noopener noreferrer"><p className="fixed bg-blue-600 p-2 rounded-lg text-sm right-10 text-white hover:cursor-pointer hover:underline">로그인</p></a>
+                            <Link to="/login" rel="noopener noreferrer">
+                                <p className="fixed bg-blue-600 p-2 rounded-lg text-sm right-10 text-white hover:cursor-pointer hover:underline">
+                                    로그인
+                                </p>
+                            </Link>
                         </div>
                     <div>
                 </div>

@@ -22,10 +22,10 @@ const Header = ({ setActiveMainContent }) => {
             <div className="space-x-6 pt-3 mb-3 mt-2">
                 <div className="flex">
                     </div>
-                        <div className="flex mt-5 font-bold text-lg hover:cursor-pointer">
+                        <div className="flex mt-5 font-bold text-lg">
                             <Link to="/" rel="noopener noreferrer">
                                 <img
-                                    src={wargame} alt="wargame" className="w-8 h-8 ml-5"
+                                    src={wargame} alt="wargame" className="w-8 h-8 ml-5 hover:cursor-pointer"
                                     onClick={() => {
                                         setSelectedCategory("Main");
                                         setActiveMainContent("Main");
@@ -36,7 +36,7 @@ const Header = ({ setActiveMainContent }) => {
                                 <Link to="/" rel="noopener noreferrer">
                                     <p 
                                         key={index}
-                                        className={`${index > 0 ? 'ml-8' : 'ml-12'} ${selectedCategory === category ? 'text-black' : 'text-slate-400'} hover:text-black hover:cursor-pointer`}
+                                        className={`${index > 0 ? 'ml-8' : 'ml-12'} ${selectedCategory === category ? 'text-black' : 'text-gray-400'} hover:text-black hover:cursor-pointer`}
                                         onMouseEnter={handleCategoryToggle}
                                         onClick={() => {
                                             handleCategoryClick(category);

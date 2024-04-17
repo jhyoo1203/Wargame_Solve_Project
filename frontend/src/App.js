@@ -18,7 +18,6 @@ function App() {
           <Route path="/" element={<Content activeMainContent={activeMainContent} />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
-        <Content activeMainContent={activeMainContent} />
         <Footer />
       </div>
     </Router>

@@ -18,7 +18,7 @@ const Header = ({ setActiveMainContent }) => {
     };
 
     return (
-        <header className="sticky top-0 w-full bg-white z-10">
+        <header className="sticky top-0 w-full bg-white bg-opacity-70 z-10 shadow-lg">
             <div className="space-x-6 pt-3 mb-3 mt-2">
                 <div className="flex">
                     </div>
@@ -33,16 +33,18 @@ const Header = ({ setActiveMainContent }) => {
                                 />
                             </Link>
                             {categories.map((category, index) => (
-                                <p 
-                                    key={index}
-                                    className={`${index > 0 ? 'ml-8' : 'ml-12'} ${selectedCategory === category ? 'text-black' : 'text-slate-400'} hover:text-black hover:cursor-pointer`}
-                                    onMouseEnter={handleCategoryToggle}
-                                    onClick={() => {
-                                        handleCategoryClick(category);
-                                    }}
-                                >
-                                    {category}
-                                </p>
+                                <Link to="/" rel="noopener noreferrer">
+                                    <p 
+                                        key={index}
+                                        className={`${index > 0 ? 'ml-8' : 'ml-12'} ${selectedCategory === category ? 'text-black' : 'text-slate-400'} hover:text-black hover:cursor-pointer`}
+                                        onMouseEnter={handleCategoryToggle}
+                                        onClick={() => {
+                                            handleCategoryClick(category);
+                                        }}
+                                    >
+                                        {category}
+                                    </p>
+                                </Link>
                             ))}
                             <Link to="/login" rel="noopener noreferrer">
                                 <p className="fixed bg-blue-600 p-2 rounded-lg text-sm right-10 text-white hover:cursor-pointer hover:underline">

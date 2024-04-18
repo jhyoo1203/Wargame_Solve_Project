@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      <div className="w-full container mx-auto bg-white">
+      <div className="w-full mx-auto bg-white">
         <Header setActiveMainContent={setActiveMainContent} />
         <Routes>
           <Route path="/" element={<Content activeMainContent={activeMainContent} />} />

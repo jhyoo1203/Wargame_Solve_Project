@@ -18,19 +18,30 @@ const Header = ({ setActiveMainContent }) => {
     };
 
     return (
-        <header className="sticky top-0 w-full bg-white bg-opacity-70 z-10 shadow-lg">
+        <header className="sticky top-0 w-full bg-white bg-opacity-80 z-10 shadow-lg">
             <div className="space-x-6 pt-3 mb-3 mt-2">
                 <div className="flex">
                     </div>
                         <div className="flex mt-5 font-bold text-lg">
                             <Link to="/" rel="noopener noreferrer">
-                                <img
-                                    src={wargame} alt="wargame" className="w-8 h-8 ml-5 hover:cursor-pointer"
-                                    onClick={() => {
-                                        setSelectedCategory("Main");
-                                        setActiveMainContent("Main");
-                                    }}
-                                />
+                                <div className="flex">
+                                    <img
+                                        src={wargame} alt="wargame" className="w-8 h-8 ml-5 hover:cursor-pointer"
+                                        onClick={() => {
+                                            setSelectedCategory("Main");
+                                            setActiveMainContent("Main");
+                                        }}
+                                    />
+                                    <p
+                                        className="text-lg ml-3"
+                                        onClick={() => {
+                                            setSelectedCategory("Main");
+                                            setActiveMainContent("Main");
+                                        }}
+                                    >
+                                        WargameSolve
+                                    </p>
+                                </div>
                             </Link>
                             {categories.map((category, index) => (
                                 <Link to="/" rel="noopener noreferrer">

@@ -155,7 +155,7 @@ const Wargame = () => {
                         <div className="flex flex-wrap">
                             {branches.map((branch, index) => (
                                 <div key={index} 
-                                     className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:shadow-md ${branch === selectedBranch ? 'border-blue-400 text-blue-400' : 'border-gray-400 text-gray-400'}`}
+                                     className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:border-blue-600 ${branch === selectedBranch ? 'border-blue-400 text-blue-400' : 'border-gray-400 text-gray-400'}`}
                                      onClick={() => setSelectedBranch(branch)}>
                                     {branch}
                                 </div>
@@ -167,7 +167,7 @@ const Wargame = () => {
                         <div className="flex flex-wrap">
                         {levels.map((level, index) => (
                             <div key={index} 
-                                className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:shadow-md ${getLevelColor(level, level === selectedLevel)} ${level === selectedLevel ? getLevelColor(level, true) : 'border-gray-400 text-gray-400'}`}
+                                className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:border-blue-600 ${getLevelColor(level, level === selectedLevel)} ${level === selectedLevel ? getLevelColor(level, true) : 'border-gray-400 text-gray-400'}`}
                                 onClick={() => setSelectedLevel(level)}>
                                 {level}
                             </div>
@@ -179,7 +179,7 @@ const Wargame = () => {
                         <div className="flex flex-wrap">
                             {isSolvedes.map((isSolved, index) => (
                                 <div key={index} 
-                                     className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:shadow-md ${isSolved === selectedIsSolved ? 'border-blue-400 text-blue-400' : 'border-gray-400 text-gray-400'}`}
+                                     className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:border-blue-600 ${isSolved === selectedIsSolved ? 'border-blue-400 text-blue-400' : 'border-gray-400 text-gray-400'}`}
                                      onClick={() => setSelectedIsSolved(isSolved)}>
                                     {isSolved}
                                 </div>

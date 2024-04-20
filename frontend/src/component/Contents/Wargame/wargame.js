@@ -25,9 +25,6 @@ const Wargame = () => {
                             워게임 문제 출제하기
                         </div>
                     </div>
-                    <div className="mt-12 font-bold text-xl">
-                        워게임 TOP 10
-                    </div>
                     <Rank />
                 </div>
             </div>

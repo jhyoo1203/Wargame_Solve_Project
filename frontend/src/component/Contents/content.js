@@ -1,6 +1,7 @@
 import React from "react";
 import Main from "./Main/main";
 import Wargame from "./Wargame/wargame"
+import Rank from "./Ranking/ranking";
 import Community from "./Community/community";
 
 const Content = ({ activeMainContent }) => {
@@ -8,7 +9,7 @@ const Content = ({ activeMainContent }) => {
     <div>
       {activeMainContent === "Main" && <Main />}
       {activeMainContent === "Wargame" && <Wargame />}
-      {/* {activeMainContent === "Ranking" && <Rank />} */}
+      {activeMainContent === "Ranking" && <Rank />}
       {activeMainContent === "Community" && <Community />}
     </div>
   );

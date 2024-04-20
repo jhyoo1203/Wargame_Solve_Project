@@ -6,8 +6,8 @@ const Rank = () => {
     return (
         <>
             <div className="mt-12 font-bold text-xl">
-                            워게임 TOP 10
-                        </div>
+                워게임 TOP 10
+            </div>
             <div className="mt-5">
                 {users.sort((a, b) => b.point - a.point).map((user, index) => (
                     <div key={index} className="flex justify-between mt-3 items-center">

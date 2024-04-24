@@ -22,7 +22,7 @@ const Categories = () => {
         <>
             <div className="flex mt-7">
                 <input placeholder="찾고 싶은 문제를 검색하세요." className="p-3 w-[500px] border-2 border-slate-300 rounded-lg" />
-                <div className="p-3 ml-3 rounded-lg bg-blue-600 text-white hover:cursor-pointer hover:shadow-md">
+                <div className="p-3 ml-3 rounded-lg bg-blue-600 text-white hover:cursor-pointer">
                     검색
                 </div>
             </div>

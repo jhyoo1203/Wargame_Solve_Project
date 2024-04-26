@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Categories = () => {
     const branches = ["모든 분야", "시스템 해킹", "리버싱", "웹해킹", "암호학", "포렌식", "클라우드", "Web3", "기타"];
     const levels = ["모든 난이도", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-    const isSolvedes = ["모든 상태", "TODO", "시도한 문제", "푼 문제"];
+    const isSolvedes = ["모든 상태", "시도한 문제", "푼 문제"];
 
     const [selectedBranch, setSelectedBranch] = useState(branches[0]);
     const [selectedLevel, setSelectedLevel] = useState(levels[0]);

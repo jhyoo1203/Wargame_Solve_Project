@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import wargame from 'image/wargame.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = ({ setActiveMainContent }) => {
     const categories = ["워게임", "랭킹", "커뮤니티"];
-    const components = ["Wargame", "Ranking", "Community"];
+    const routes = ["/wargame", "/ranking", "/community"];
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState();
+    const navigate = useNavigate();
 
     const handleCategoryToggle = () => {
         setIsCategoryOpen(!isCategoryOpen);
@@ -14,7 +15,7 @@ const Header = ({ setActiveMainContent }) => {
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
-        setActiveMainContent(components[categories.indexOf(category)])
+        navigate(routes[categories.indexOf(category)]);
     };
 
     return (
@@ -45,7 +46,7 @@ const Header = ({ setActiveMainContent }) => {
                                     </div>
                                 </Link>
                                 {categories.map((category, index) => (
-                                    <Link to="/" rel="noopener noreferrer">
+                                    <Link to={routes[index]} rel="noopener noreferrer">
                                         <p 
                                             key={index}
                                             className={`${index > 0 ? 'ml-8' : 'ml-12'} ${selectedCategory === category ? 'text-black' : 'text-gray-400'} hover:text-black hover:cursor-pointer`}

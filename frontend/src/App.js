@@ -12,6 +12,7 @@ import CommunityPage from './component/Contents/Community/community';
 
 function App() {
   const [activeMainContent, setActiveMainContent] = useState('Main');
+  const categories = ["home", "popular", "qna", "free", "career", "info", "study", "contest"];
 
   return (
     <Router>
@@ -23,14 +24,9 @@ function App() {
           <Route path="/wargame" element={<WargamePage />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/community/*" element={<CommunityPage />}>
-            <Route path="home" element={<CommunityPage category="home" />} />
-            <Route path="popular" element={<CommunityPage category="popular" />} />
-            <Route path="qna" element={<CommunityPage category="qna" />} />
-            <Route path="free" element={<CommunityPage category="free" />} />
-            <Route path="career" element={<CommunityPage category="career" />} />
-            <Route path="info" element={<CommunityPage category="info" />} />
-            <Route path="study" element={<CommunityPage category="study" />} />
-            <Route path="contest" element={<CommunityPage category="contest" />} />
+            {categories.map((category, index) => (
+              <Route key={index} path={category} element={<CommunityPage category={category} />} />
+            ))}
           </Route>
         </Routes>
         <Footer />

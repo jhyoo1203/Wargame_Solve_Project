@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 import Categories from "./categories";
 import ProblemInfo from "./problemInfo";
 import Rank from "./rank";
 
 const Wargame = () => { 
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <div>
             <div className="flex justify-center h-screen">

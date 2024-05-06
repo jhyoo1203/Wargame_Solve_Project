@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import Google from 'image/Google.png';
 
 const LoginPage = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+  }, [pathname]);
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});

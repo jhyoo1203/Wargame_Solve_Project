@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 const Rank = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return(
         <div>
             <div className="flex justify-center items-center h-screen bg-blue-200">

@@ -2,6 +2,12 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Community = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    
     const categories = useMemo(() => ["HOME", "인기글🔥", "Q&A", "자유게시판", "이직 • 커리어", "정보 • 테크", "스터디 • 팀원", "대회 • 행사 홍보"], []);
     const routes = useMemo(() => ["home", "popular", "qna", "free", "career", "info", "study", "contest"], []);
 

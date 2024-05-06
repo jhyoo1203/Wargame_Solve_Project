@@ -61,7 +61,13 @@ const Header = ({ setActiveMainContent }) => {
                                 ))}
                             </div>
                             <Link to="/login" rel="noopener noreferrer">
-                                <p className="-mt-1 mr-10 bg-blue-600 p-2 rounded-lg text-sm text-white hover:cursor-pointer hover:underline">
+                                <p
+                                    className="-mt-1 mr-10 bg-blue-600 p-2 rounded-lg text-sm text-white hover:cursor-pointer hover:underline"
+                                    onClick={() => {
+                                        setSelectedCategory("Login");
+                                        setActiveMainContent("Login");
+                                    }}
+                                >
                                     로그인
                                 </p>
                             </Link>

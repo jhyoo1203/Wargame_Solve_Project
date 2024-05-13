@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
+import PostList from "./post_list";
 
 const Community = () => {
     const { pathname } = useLocation();
@@ -27,6 +28,21 @@ const Community = () => {
         navigate(routes[categories.indexOf(category)]);
     }
 
+    const posts = [
+        {
+          title: '첫 번째 게시글',
+          content: '이것은 첫 번째 게시글입니다.',
+          author: 'John Doe',
+          date: '2024-05-13',
+        },
+        {
+          title: '두 번째 게시글',
+          content: '이것은 두 번째 게시글입니다.',
+          author: 'Jane Doe',
+          date: '2024-05-12',
+        },
+      ];
+
     return (
         <>
             <div className="flex justify-center h-screen mt-5">
@@ -53,6 +69,8 @@ const Community = () => {
                             커뮤니티 글 작성하기
                         </div>
                     </div>
+                    <div className="mt-5 w-full border-t-2 border-slate-300"></div>
+                    <PostList posts={posts} />
                 </div>
             </div>
         </>

@@ -15,7 +15,7 @@ public class CORSconfiguration {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://www.gwnueum.com", "http://gwnueum.com" ,"http://localhost:2019", "*")
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PATCH")
                         .allowedHeaders("Authorization", "Content-Type")
                         .allowCredentials(false);

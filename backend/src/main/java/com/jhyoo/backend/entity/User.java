@@ -19,9 +19,6 @@ public class User {
     @Column(name="nickname")
     private String nickname;
 
-    @Column(name="rank")
-    private String rank;
-
     @Column(name="icon_url")
     private String iconUrl;
 

@@ -1,16 +1,16 @@
 -- 사용자 데이터 삽입
-INSERT INTO users (userid, rank, icon_url, nickname, name, achievement, score)
+INSERT INTO users (userid, icon_url, nickname, name, achievement, score)
 VALUES
-    (1, 'Beginner', 'https://example.com/user1.png', 'user1', 'John Doe', 'Rookie', 100),
-    (2, 'Intermediate', 'https://example.com/user2.png', 'user2', 'Jane Smith', 'Expert', 200),
-    (3, 'Advanced', 'https://example.com/user3.png', 'user3', 'Alice Johnson', 'Master', 300),
-    (4, 'Beginner', 'https://example.com/user4.png', 'user4', 'Bob Brown', 'Novice', 120),
-    (5, 'Intermediate', 'https://example.com/user5.png', 'user5', 'Charlie Wilson', 'Guru', 250),
-    (6, 'Advanced', 'https://example.com/user6.png', 'user6', 'David Lee', 'Legend', 380),
-    (7, 'Beginner', 'https://example.com/user7.png', 'user7', 'Eva Garcia', 'Champion', 140),
-    (8, 'Intermediate', 'https://example.com/user8.png', 'user8', 'Fiona Martinez', 'Master', 270),
-    (9, 'Advanced', 'https://example.com/user9.png', 'user9', 'George Clark', 'Hero', 400),
-    (10, 'Beginner', 'https://example.com/user10.png', 'user10', 'Hannah Rodriguez', 'Elite', 160);
+    (1, 'https://www.acmicpc.net/favicon.ico', 'Reinose', 'John Doe', '워게임:20', 26160),
+    (2, 'https://www.acmicpc.net/favicon.ico', 'Sechack', 'Jane Smith', 'CTF First Place', 22973),
+    (3, 'https://www.acmicpc.net/favicon.ico', 'G0RiyA', 'Alice Johnson', 'CTF First Place', 24659),
+    (4, 'https://www.acmicpc.net/favicon.ico', 'Cronus', 'Bob Brown', '워게임 고인물', 20391),
+    (5, 'https://www.acmicpc.net/favicon.ico', 'ainsetin', 'Charlie Wilson', 'Dreamhack Beta CTF 2위', 24621),
+    (6, 'https://www.acmicpc.net/favicon.ico', 'snwo', 'David Lee', 'Open Beta Tester', 22438),
+    (7, 'https://www.acmicpc.net/favicon.ico', '2dedce', 'Eva Garcia', '워게임 고인물', 19779),
+    (8, 'https://www.acmicpc.net/favicon.ico', 'user8', 'Fiona Martinez', '워게임 고인물', 13532),
+    (9, 'https://www.acmicpc.net/favicon.ico', 'user9', 'George Clark', 'Open Beta Tester', 25341),
+    (10, 'https://www.acmicpc.net/favicon.ico', 'user10', 'Hannah Rodriguez', 'Open Beta Tester', 37214);
 
 -- 문제 데이터 삽입
 INSERT INTO problems (problem_id, level, title, field, creator_icon_url, creator_nickname, solutions_count)

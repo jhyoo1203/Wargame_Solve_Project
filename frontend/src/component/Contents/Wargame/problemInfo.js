@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 
-import problems from "./problems";
+// import problems from "./problems";
 
 const ProblemInfo = () => {
+    const [problems, setProblems] = React.useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/problems/all").then((response) => {
+            setProblems(response.data);
+        });
+    }, []);
+
     const getBgColor = (level) => {
         if (level >= 1 && level <= 3) {
           return 'bg-green-400';
@@ -32,10 +41,10 @@ const ProblemInfo = () => {
                         <div className={`w-5 px-1 text-center rounded-lg text-white ${getBgColor(problem.level)}`}>{problem.level}</div>
                         <div className="w-40 ml-2 font-bold hover:cursor-pointer hover:underline">{problem.title}</div>
                         <div className="w-40 ml-[50px]">{problem.field}</div>
-                        <div className="w-20 ml-[38px]">{problem.answer_num}</div>
+                        <div className="w-20 ml-[50px]">{problem.solutionsCount}</div>
                         <div className="flex">
-                            <img src={problem.iconURL} alt="icon" className="w-6 h-6 ml-[55px]" />
-                            <div className="ml-2 font-bold">{problem.questioner}</div>
+                            <img src={problem.creatorIconUrl} alt="icon" className="w-6 h-6 ml-[50px]" />
+                            <div className="ml-2 font-bold">{problem.creatorNickname}</div>
                         </div>
                     </div>
                 ))}

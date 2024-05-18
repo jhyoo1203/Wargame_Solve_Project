@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-// import users from "./users";
-
 const Rank = () => {
     const [users, setUsers] = React.useState([]);
 

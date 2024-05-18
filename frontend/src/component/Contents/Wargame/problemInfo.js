@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-// import problems from "./problems";
-
 const ProblemInfo = () => {
     const [problems, setProblems] = React.useState([]);
 

@@ -22,18 +22,7 @@ public class ProblemService {
     public List<ProblemDTO> getAllProblems() {
         List<Problem> problems = problemRepository.findAll();
 
-        return problems.stream().map(problem -> {
-            ProblemDTO problemDTO = new ProblemDTO();
-
-            problemDTO.setProblemId(problem.getProblemId());
-            problemDTO.setTitle(problem.getTitle());
-            problemDTO.setLevel(problem.getLevel());
-            problemDTO.setField(problem.getField());
-            problemDTO.setCreatorIconUrl(problem.getCreatorIconUrl());
-            problemDTO.setCreatorNickname(problem.getCreatorNickname());
-            problemDTO.setSolutionsCount(problem.getSolutionsCount());
-            return problemDTO;
-        }).collect(Collectors.toList());
+        return problems.stream().map(this::getProblemDTO).collect(Collectors.toList());
     }
 
     @CacheEvict(value = "ProblemAllCache", allEntries = true)
@@ -47,15 +36,19 @@ public class ProblemService {
         if (problem == null) {
             return null;
         }
-        
-        ProblemDTO problemDTO = new ProblemDTO();
-        problemDTO.setProblemId(problem.getProblemId());
-        problemDTO.setTitle(problem.getTitle());
-        problemDTO.setLevel(problem.getLevel());
-        problemDTO.setField(problem.getField());
-        problemDTO.setCreatorIconUrl(problem.getCreatorIconUrl());
-        problemDTO.setCreatorNickname(problem.getCreatorNickname());
-        problemDTO.setSolutionsCount(problem.getSolutionsCount());
-        return problemDTO;
+
+        return getProblemDTO(problem);
+    }
+
+    private ProblemDTO getProblemDTO(Problem problem) {
+        return ProblemDTO.builder()
+                .problemId(problem.getProblemId())
+                .level(problem.getLevel())
+                .title(problem.getTitle())
+                .field(problem.getField())
+                .creatorIconUrl(problem.getCreatorIconUrl())
+                .creatorNickname(problem.getCreatorNickname())
+                .solutionsCount(problem.getSolutionsCount())
+                .build();
     }
 }

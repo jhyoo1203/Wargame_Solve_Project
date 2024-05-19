@@ -1,12 +1,12 @@
 package com.jhyoo.backend.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class ProblemDTO {
     private Long problemId;
     private int level;
@@ -15,5 +15,15 @@ public class ProblemDTO {
     private String creatorIconUrl;
     private String creatorNickname;
     private int solutionsCount;
+    
+    public ProblemDTO(Long problemId, int level, String title, String field, String creatorIconUrl, String creatorNickname, int solutionsCount) {
+        this.problemId = problemId;
+        this.level = level;
+        this.title = title;
+        this.field = field;
+        this.creatorIconUrl = creatorIconUrl;
+        this.creatorNickname = creatorNickname;
+        this.solutionsCount = solutionsCount;
+    }
 }
 

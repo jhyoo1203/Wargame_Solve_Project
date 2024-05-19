@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
 import Categories from "./categories";
-import ProblemInfo from "./problemInfo";
+import ProblemInfo from "./problem_info";
 import Rank from "./rank";
 
 const Wargame = () => { 

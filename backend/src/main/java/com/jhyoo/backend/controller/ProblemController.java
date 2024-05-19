@@ -1,5 +1,7 @@
 package com.jhyoo.backend.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,10 @@ public class ProblemController {
     @RequestMapping("/all/cache/reset")
     public String cacheReset() {
         return problemService.cacheReset();
+    }
+
+    @GetMapping("/{problemId}")
+    public Object getProblem(@PathVariable("problemId") Long problemId) {
+        return problemService.getProblem(problemId);
     }
 }

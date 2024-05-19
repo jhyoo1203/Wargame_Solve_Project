@@ -40,4 +40,22 @@ public class ProblemService {
     public String cacheReset() {
         return "Cache is reset";
     }
+
+    @Cacheable(value = "ProblemCache")
+    public ProblemDTO getProblem(Long problemId) {
+        Problem problem = problemRepository.findById(problemId).orElse(null);
+        if (problem == null) {
+            return null;
+        }
+        
+        ProblemDTO problemDTO = new ProblemDTO();
+        problemDTO.setProblemId(problem.getProblemId());
+        problemDTO.setTitle(problem.getTitle());
+        problemDTO.setLevel(problem.getLevel());
+        problemDTO.setField(problem.getField());
+        problemDTO.setCreatorIconUrl(problem.getCreatorIconUrl());
+        problemDTO.setCreatorNickname(problem.getCreatorNickname());
+        problemDTO.setSolutionsCount(problem.getSolutionsCount());
+        return problemDTO;
+    }
 }

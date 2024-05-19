@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const ProblemInfo = () => {
     const [problems, setProblems] = React.useState([]);
@@ -34,18 +35,22 @@ const ProblemInfo = () => {
                 </div>
             </div>
             <div className="flex flex-col">
-                {problems.map((problem, index) => (
-                    <div key={index} className="flex w-full mt-3">
-                        <div className={`w-5 px-1 text-center rounded-lg text-white ${getBgColor(problem.level)}`}>{problem.level}</div>
-                        <div className="w-40 ml-2 font-bold hover:cursor-pointer hover:underline">{problem.title}</div>
-                        <div className="w-40 ml-[50px]">{problem.field}</div>
-                        <div className="w-20 ml-[50px]">{problem.solutionsCount}</div>
+            {problems.map((problem, index) => (
+                <div className="flex w-full mt-3">
+                    <Link to={`/problems/${problem.problemId}`} key={index}>
                         <div className="flex">
-                            <img src={problem.creatorIconUrl} alt="icon" className="w-6 h-6 ml-[50px]" />
-                            <div className="ml-2 font-bold">{problem.creatorNickname}</div>
+                            <div className={`w-5 px-1 text-center rounded-lg text-white ${getBgColor(problem.level)}`}>{problem.level}</div>
+                            <div className="w-40 ml-2 font-bold hover:cursor-pointer hover:underline">{problem.title}</div>
                         </div>
+                    </Link>
+                    <div className="w-40 ml-[50px]">{problem.field}</div>
+                    <div className="w-20 ml-[50px]">{problem.solutionsCount}</div>
+                    <div className="flex">
+                        <img src={problem.creatorIconUrl} alt="icon" className="w-6 h-6 ml-[50px]" />
+                        <div className="ml-2 font-bold">{problem.creatorNickname}</div>
                     </div>
-                ))}
+                </div>
+            ))}
             </div>
         </div>
     )

@@ -17,12 +17,15 @@ const ProblemDetail = () => {
     }
 
     return (
-        <div>
-            <div className="flex justify-center items-center h-screen">
-                <div className="text-center">
-                    <h1 className="text-5xl font-bold">{problem.title}</h1>
-                    <p className="text-xl mt-3">{problem.field}</p>
-                </div>
+        <div className='px-20 py-10'>
+            <div className="mt-5">
+                <div className="text-2xl font-bold">{problem.title}</div>
+                <div className="mt-5">출제자: {problem.creatorNickname}</div>
+                <div className="mt-5">출제 분야: {problem.field}</div>
+                <div className="mt-5">출제 난이도: {problem.level}</div>
+                <div className="mt-5">풀이 수: {problem.solutionsCount}</div>
+                <div className="mt-5">문제 내용: {problem.content}</div>
+                <div className="mt-5">힌트: {problem.hint}</div>
             </div>
         </div>
     );

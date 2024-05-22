@@ -20,21 +20,32 @@ public class UserService {
     public List<UserDTO> getAllUsers() {
         List<User> users = userRepository.findAll();
 
-        return users.stream().map(user -> {
-            UserDTO userDTO = new UserDTO();
-
-            userDTO.setUserId(user.getUserid());
-            userDTO.setName(user.getName());
-            userDTO.setNickname(user.getNickname());
-            userDTO.setIconUrl(user.getIconUrl());
-            userDTO.setAchievement(user.getAchievement());
-            userDTO.setScore(user.getScore());
-            return userDTO;
-        }).collect(Collectors.toList());
+        return users.stream().map(this::getUserDTO).collect(Collectors.toList());
     }
 
     @CacheEvict(value = "UserAllCache", allEntries = true)
     public String cacheReset() {
         return "Cache is reset";
+    }
+
+    @Cacheable(value = "UserCache")
+    public UserDTO getUser(Long userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            return null;
+        }
+
+        return getUserDTO(user);
+    }
+
+    private UserDTO getUserDTO(User user) {
+        return UserDTO.builder()
+                .userId(user.getUserId())
+                .name(user.getName())
+                .nickname(user.getNickname())
+                .iconUrl(user.getIconUrl())
+                .achievement(user.getAchievement())
+                .score(user.getScore())
+                .build();
     }
 }

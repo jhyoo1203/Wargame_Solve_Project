@@ -1,5 +1,5 @@
 -- 사용자 데이터 삽입
-INSERT INTO users (userid, icon_url, nickname, name, achievement, score)
+INSERT INTO users (user_id, icon_url, nickname, name, achievement, score)
 VALUES
     (1, 'https://www.acmicpc.net/favicon.ico', 'Reinose', 'John Doe', '워게임:20', 26160),
     (2, 'https://www.acmicpc.net/favicon.ico', 'Sechack', 'Jane Smith', 'CTF First Place', 22973),

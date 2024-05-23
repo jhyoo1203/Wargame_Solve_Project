@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
 const ProblemInfo = () => {
-    const [problems, setProblems] = React.useState([]);
+    const [problems, setProblems] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:8080/problems/all").then((response) => {

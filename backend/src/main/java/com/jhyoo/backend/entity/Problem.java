@@ -22,6 +22,12 @@ public class Problem {
     @Column(name="field")
     private String field;
 
+    @Column(name="problem_url")
+    private String problemUrl;
+
+    @Column(name="description")
+    private String description;
+
     @Column(name="creator_icon_url")
     private String creatorIconUrl;
 

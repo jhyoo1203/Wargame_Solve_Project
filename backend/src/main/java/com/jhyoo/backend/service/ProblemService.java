@@ -45,6 +45,8 @@ public class ProblemService {
                 .problemId(problem.getProblemId())
                 .level(problem.getLevel())
                 .title(problem.getTitle())
+                .description(problem.getDescription())
+                .problemUrl(problem.getProblemUrl())
                 .field(problem.getField())
                 .creatorIconUrl(problem.getCreatorIconUrl())
                 .creatorNickname(problem.getCreatorNickname())

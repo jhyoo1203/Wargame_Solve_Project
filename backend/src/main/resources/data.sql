@@ -18,12 +18,12 @@ VALUES
     (1, 'Problem 1', 2, '리버싱', 'Description of Problem 1', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'Reinose', 3),
     (2, 'Problem 2', 3, '웹 해킹', 'Description of Problem 2', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'Sechack', 2),
     (3, 'Problem 3', 1, '리버싱', 'Description of Problem 3', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'G0RiyA', 1),
-    (4, 'Problem 4', 2, '웹 해킹', 'Description of Problem 4', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'Cronus', 2),
+    (4, 'Problem 4', 6, '웹 해킹', 'Description of Problem 4', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'Cronus', 2),
     (5, 'Problem 5', 3, '리버싱', 'Description of Problem 5', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'ainsetin', 2),
-    (6, 'Problem 6', 1, '웹 해킹', 'Description of Problem 6', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'snwo', 1),
+    (6, 'Problem 6', 7, '웹 해킹', 'Description of Problem 6', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'snwo', 1),
     (7, 'Problem 7', 2, '리버싱', 'Description of Problem 7', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', '2dedce', 1),
     (8, 'Problem 8', 3, '웹 해킹', 'Description of Problem 8', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'user8', 1),
-    (9, 'Problem 9', 1, '리버싱', 'Description of Problem 9', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'user9', 1),
+    (9, 'Problem 9', 9, '리버싱', 'Description of Problem 9', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'user9', 1),
     (10, 'Problem 10', 2, '웹 해킹', 'Description of Problem 10', 'https://www.acmicpc.net/favicon.ico', 'https://www.acmicpc.net/favicon.ico', 'user10', 1);
 
 -- 문제 풀이 데이터 삽입

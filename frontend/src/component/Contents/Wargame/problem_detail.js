@@ -35,7 +35,7 @@ const ProblemDetail = () => {
                     <div className={`w-5 px-1 text-center rounded-lg text-white ${getBgColor(problem.level)}`}>{problem.level}</div>
                     <div className="w-40 ml-2 font-bold hover:cursor-pointer hover:underline">{problem.title}</div>
                 </div>
-                <div className="mt-5">출제자: {problem.creatorNickname}</div>
+                <div className="mt-5 flex">출제자: <img src={`${problem.creatorIconUrl}`} alt='icon' className='ml-2 mr-1 w-8 h-8' />{problem.creatorNickname}</div>
                 <div className="mt-5">출제 분야: {problem.field}</div>
                 <div className="mt-5">출제 난이도: {problem.level}</div>
                 <div className="mt-5">풀이 수: {problem.solutionsCount}</div>

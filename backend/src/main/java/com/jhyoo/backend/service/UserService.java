@@ -6,6 +6,7 @@ import com.jhyoo.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,23 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private final String DEFAULT_ACHIEVEMENT = "뉴비";
+    private final int DEFAULT_SCORE = 0;
+
+    public User createUser(String username, String email, String nickname, String name, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setName(name);
+        user.setNickname(nickname);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setAchievement(DEFAULT_ACHIEVEMENT);
+        user.setScore(DEFAULT_SCORE);
+        this.userRepository.save(user);
+        return user;
+    }
 
     @Cacheable(value = "UserAllCache")
     public List<UserDTO> getAllUsers() {
@@ -38,7 +56,7 @@ public class UserService {
         return getUserDTO(user);
     }
 
-    private UserDTO getUserDTO(User user) {
+    public UserDTO getUserDTO(User user) {
         return UserDTO.builder()
                 .userId(user.getUserId())
                 .name(user.getName())

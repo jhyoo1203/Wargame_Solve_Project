@@ -6,6 +6,7 @@ import Header from './component/Header/header';
 import Content from './component/Contents/content';
 import Footer from './component/Contents/Footer/footer';
 import LoginPage from './component/Contents/loginpage';
+import Signup from 'component/Contents/signup';
 import WargamePage from './component/Contents/Wargame/wargame';
 import RankingPage from './component/Contents/Ranking/ranking';
 import CommunityPage from './component/Contents/Community/community';
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Content activeMainContent={activeMainContent} />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/wargame" element={<WargamePage />} />
           <Route path="/problems/:problemId" element={<ProblemDetail />} />
           <Route path="/ranking" element={<RankingPage />} />

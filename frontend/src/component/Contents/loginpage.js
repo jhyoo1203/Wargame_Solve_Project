@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Google from 'image/Google.png';
 
 const LoginPage = () => {
@@ -114,9 +114,9 @@ const LoginPage = () => {
 
       <div className="mt-4 text-center text-sm text-gray-700">
         <span>WargameSolve가 처음이신가요? </span>
-        <span className="text-blue-600 hover:underline hover:cursor-pointer">
+        <Link to="/signup" className="text-blue-600 hover:underline">
           회원가입
-        </span>
+        </Link>
       </div>
     </div>
   );

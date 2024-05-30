@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [name, setName] = useState("");
@@ -8,6 +9,8 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSignup = () => {
         if (password !== confirmPassword) {
@@ -24,6 +27,8 @@ const Signup = () => {
         })
         .then((response) => {
             console.log(response);
+            navigate('/login');
+            
         })
         .catch((error) => {
             console.log(error);

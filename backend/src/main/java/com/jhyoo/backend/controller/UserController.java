@@ -24,7 +24,6 @@ public class UserController {
         return userService.getUserDTO(user);
     }
 
-
     @GetMapping("/all")
     public List<UserDTO> getAllSchedules() {
         return userService.getAllUsers();

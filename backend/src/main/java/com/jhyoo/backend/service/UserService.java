@@ -59,6 +59,9 @@ public class UserService {
     public UserDTO getUserDTO(User user) {
         return UserDTO.builder()
                 .userId(user.getUserId())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
                 .name(user.getName())
                 .nickname(user.getNickname())
                 .iconUrl(user.getIconUrl())

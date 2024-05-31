@@ -1,7 +1,7 @@
 -- 사용자 데이터 삽입
 INSERT INTO users (user_id, username, email, password, icon_url, nickname, name, achievement, score)
 VALUES
-    (11, 'jhyoo1203', 'jhyoo1203@gmail.com', '$2b$12$KixBf2rrdWJai1b3/zSYUeEZ0PbsJbZp1Eeq1S1F1j1e7Zn12F/eG', 'https://www.acmicpc.net/favicon.ico', 'Reinose', 'John Doe', '워게임:20', 26160),
+    (11, 'jhyoo1203', 'jhyoo1203@gmail.com', '$2a$10$jqht8bv0otj6PwqRcPKOjuJR17NhPbb1ATlIAyYXn6JWe1kNm6QWG', 'https://www.acmicpc.net/favicon.ico', 'Reinose', 'John Doe', '워게임:20', 26160),
     (12, 'sechack', 'sechack@gmail.com', '$2b$12$KixBf2rrdWJai1b3/zSYUeEZ0PbsJbZp1Eeq1S1F1j1e7Zn12F/eG', 'https://www.acmicpc.net/favicon.ico', 'Sechack', 'Jane Doe', '워게임:10', 15000),
     (13, 'g0riya', 'g0riya@naver.com', '$2b$12$KixBf2rrdWJai1b3/zSYUeEZ0PbsJbZp1Eeq1S1F1j1e7Zn12F/eG', 'https://www.acmicpc.net/favicon.ico', 'G0RiyA', 'Alice Doe', '워게임:5', 10000),
     (14, 'cronus', 'cronus@gmail.com', '$2b$12$KixBf2rrdWJai1b3/zSYUeEZ0PbsJbZp1Eeq1S1F1j1e7Zn12F/eG', 'https://www.acmicpc.net/favicon.ico', 'Cronus', 'Bob Doe', '워게임:15', 20000),

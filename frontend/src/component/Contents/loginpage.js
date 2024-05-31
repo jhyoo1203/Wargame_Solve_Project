@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from 'react-router-dom';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Google from 'image/Google.png';
 
 const LoginPage = () => {
@@ -9,13 +11,14 @@ const LoginPage = () => {
       window.scrollTo(0, 0);
   }, [pathname]);
   
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const navigate = useNavigate();
+
+  const validateUsername = (username) => {
+    return username.length >= 3;
   };
 
   const validatePassword = (password) => {
@@ -25,15 +28,36 @@ const LoginPage = () => {
   const handleLogin = () => {
     const newErrors = {};
 
-    if (!validateEmail(email)) {
-      newErrors.email = '올바른 이메일을 입력해주세요.';
+    if (!validateUsername(username)) {
+      newErrors.username = '올바른 이름을 입력해주세요.';
     }
 
     if (!validatePassword(password)) {
       newErrors.password = '비밀번호가 틀렸습니다.';
     }
-  setErrors(newErrors);
+    setErrors(newErrors);
 
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    axios
+      .post('http://localhost:8080/login', {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        setUsername('');
+        setPassword('');
+    
+        alert('로그인 성공');
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('로그인 실패');
+      });
   };
 
   return (
@@ -44,17 +68,17 @@ const LoginPage = () => {
         <div className="mb-6 relative">
           <label>
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="username"
               className={`mt-1 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full sm:text-sm focus:ring-1 rounded-lg ${
-                errors.email ? 'border-red-500' : ''
+                errors.username ? 'border-red-500' : ''
               }`}
-              placeholder="이메일을 입력해주세요."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="아이디를 입력해주세요."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            {errors.username && (
+              <p className="text-red-500 text-sm mt-1">{errors.username}</p>
             )}
           </label>
         </div>

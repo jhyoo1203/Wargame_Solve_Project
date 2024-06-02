@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.DelegatingSecurityContextRepository;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
@@ -41,8 +42,8 @@ public class SecurityConfig {
         @Bean
         SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
-                        .authorizeRequests((authorize) -> authorize
-                                .requestMatchers("/login", "/users/signup").permitAll()
+                        .authorizeHttpRequests((authorize) -> authorize
+                                .requestMatchers("/**").permitAll()
                                 .anyRequest().authenticated())
                         .formLogin((formLogin) -> formLogin
                                 .loginPage("/login")
@@ -55,14 +56,18 @@ public class SecurityConfig {
                                 .logoutSuccessUrl("/login")
                                 .permitAll())
                         .csrf((csrf) -> csrf
-                                .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"),
-                                        new AntPathRequestMatcher("/users/signup")))
+                                .ignoringRequestMatchers(
+                                        new AntPathRequestMatcher("/h2-console/**"),
+                                        new AntPathRequestMatcher("/users/signup"),
+                                        new AntPathRequestMatcher("/login")
+                                ))
                         .headers((headers) -> headers
                                 .addHeaderWriter(new XFrameOptionsHeaderWriter(
                                         XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
                         .exceptionHandling(config -> config
                                 .authenticationEntryPoint(authenticationEntryPoint)
                                 .accessDeniedHandler(accessDeniedHandler))
+                        .addFilterBefore(ajaxAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
                 ;
                 return http.build();
         }
@@ -91,6 +96,12 @@ public class SecurityConfig {
         @Bean
         AuthenticationManager authenticationManager() throws Exception {
                 return authenticationConfiguration.getAuthenticationManager();
+        }
+
+        @Bean
+        public AuthenticationManagerBuilder authenticationManagerBuilder(AuthenticationManagerBuilder auth) throws Exception {
+                auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+                return auth;
         }
 
 }

@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StringUtils;
@@ -20,7 +18,6 @@ import lombok.Data;
 public class CustomAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private ObjectMapper objectMapper = new ObjectMapper();
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public CustomAuthenticationFilter() {
         super(new AntPathRequestMatcher("/login"));
@@ -43,12 +40,10 @@ public class CustomAuthenticationFilter extends AbstractAuthenticationProcessing
             throw new IllegalArgumentException("username or password is empty");
         }
 
-        String encryptedPassword = passwordEncoder.encode(accountDto.getPassword());
-
         // 처음에는 인증 되지 않은 토큰 생성
         CustomAuthenticationToken token = new CustomAuthenticationToken(
             accountDto.getUsername(),
-            encryptedPassword
+            accountDto.getPassword()
         );
 
         // Manager 에게 인증 처리 

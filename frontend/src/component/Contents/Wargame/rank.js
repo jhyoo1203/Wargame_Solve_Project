@@ -16,7 +16,7 @@ const Rank = () => {
                 워게임 TOP 10
             </div>
             <div className="mt-5 mb-5">
-                {users.sort((a, b) => b.score - a.score).map((user, index) => (
+                {users.sort((a, b) => b.score - a.score).slice(0, 10).map((user, index) => (
                     <div key={index} className="flex justify-between mt-3 items-center">
                         <div className="flex items-center">
                             <div className="mr-3 font-bold">{index + 1}위</div>

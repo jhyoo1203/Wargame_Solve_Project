@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Google from 'image/Google.png';
+import { useDispatch } from "react-redux";
+import { setUser } from '../../module/user';
 
 const LoginPage = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
       window.scrollTo(0, 0);
@@ -14,8 +17,6 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-
-  const navigate = useNavigate();
 
   const validateUsername = (username) => {
     return username.length >= 3;
@@ -47,7 +48,11 @@ const LoginPage = () => {
         password: password,
       })
       .then((response) => {
+        const userData = response.data;
         console.log(response);
+
+        dispatch(setUser(userData));
+
         setUsername('');
         setPassword('');
     

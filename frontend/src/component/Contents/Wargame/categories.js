@@ -41,13 +41,13 @@ const Categories = () => {
             <div className="flex mt-5 text-lg text-gray-400">
                 <p className="mt-2 font-bold mr-3 text-black w-20">난이도</p>
                 <div className="flex flex-wrap">
-                {levels.map((level, index) => (
-                    <div key={index} 
-                        className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:border-blue-600 ${getLevelColor(level, level === selectedLevel)} ${level === selectedLevel ? getLevelColor(level, true) : 'border-gray-400 text-gray-400'}`}
-                        onClick={() => setSelectedLevel(level)}>
-                        {level}
-                    </div>
-                ))}
+                    {levels.map((level, index) => (
+                        <div key={index} 
+                            className={`mt-2 ml-3 hover:cursor-pointer border-2 px-2 rounded-xl hover:border-blue-600 ${getLevelColor(level, level === selectedLevel)} ${level === selectedLevel ? getLevelColor(level, true) : 'border-gray-400 text-gray-400'}`}
+                            onClick={() => setSelectedLevel(level)}>
+                            {level}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="flex mt-5 text-lg text-gray-400">

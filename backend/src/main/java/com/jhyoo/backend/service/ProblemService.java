@@ -17,6 +17,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProblemService {
     private final ProblemRepository problemRepository;
+
+    public Problem createProblem(String title, String description, String problemUrl, String field, int level, String nickname) {
+        Problem problem = new Problem();
+        problem.setTitle(title);
+        problem.setDescription(description);
+        problem.setProblemUrl(problemUrl);
+        problem.setField(field);
+        problem.setLevel(level);
+        problem.setCreatorIconUrl("https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png");
+        problem.setCreatorNickname(nickname);
+        problem.setSolutionsCount(0);
+        this.problemRepository.save(problem);
+        return problem;
+    }
     
     @Cacheable(value = "ProblemAllCache")
     public List<ProblemDTO> getAllProblems() {

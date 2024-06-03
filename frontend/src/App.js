@@ -11,6 +11,7 @@ import WargamePage from './component/Contents/Wargame/wargame';
 import RankingPage from './component/Contents/Ranking/ranking';
 import CommunityPage from './component/Contents/Community/community';
 import ProblemDetail from './component/Contents/Wargame/problem_detail';
+import CreateProblem from './component/Contents/Wargame/create_problem';
 
 function App() {
   const [activeMainContent, setActiveMainContent] = useState('Main');
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/wargame" element={<WargamePage />} />
           <Route path="/problems/:problemId" element={<ProblemDetail />} />
+          <Route path="/createProblem" element={<CreateProblem />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/community/*" element={<CommunityPage />}>
             {categories.map((category, index) => (

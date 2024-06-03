@@ -24,7 +24,7 @@ const ProblemInfo = () => {
     }
     
     return(
-        <div>
+        <div className="mb-10">
             <div>
                 <div className="flex mt-5 text-lg font-bold">총<div className="text-blue-600 ml-1.5"> {problems.length}개</div>의 문제가 있습니다.</div>
                 <div className="flex mt-1 text-lg font-bold">

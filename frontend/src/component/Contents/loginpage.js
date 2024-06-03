@@ -65,6 +65,12 @@ const LoginPage = () => {
       });
   };
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      handleLogin();
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-blue-50">
       <div className="w-96 p-10 bg-white rounded-lg shadow-lg">
@@ -81,6 +87,7 @@ const LoginPage = () => {
               placeholder="아이디를 입력해주세요."
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
             {errors.username && (
               <p className="text-red-500 text-sm mt-1">{errors.username}</p>
@@ -99,6 +106,7 @@ const LoginPage = () => {
               placeholder="비밀번호를 입력해주세요."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">{errors.password}</p>

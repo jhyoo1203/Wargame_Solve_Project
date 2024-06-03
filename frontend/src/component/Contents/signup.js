@@ -13,6 +13,11 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const handleSignup = () => {
+        if (name === "" || nickname === "" || username === "" || password === "" || confirmPassword === "" || email === "") {
+            alert("모든 항목을 입력해주세요.");
+            return;
+        }
+
         if (password !== confirmPassword) {
             alert("비밀번호가 일치하지 않습니다.");
             return;
@@ -35,6 +40,12 @@ const Signup = () => {
         });
     };
 
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          handleSignup();
+        }
+    }
+
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-blue-50">
             <div className="w-96 p-10 bg-white rounded-lg shadow-lg">
@@ -48,6 +59,7 @@ const Signup = () => {
                             onChange={e => setName(e.target.value)}
                             className={`mt-1 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="이름을 입력해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
                     <label>
@@ -57,6 +69,7 @@ const Signup = () => {
                             onChange={e => setNickname(e.target.value)}
                             className={`mt-5 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="닉네임을 입력해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
                     <label>
@@ -66,6 +79,7 @@ const Signup = () => {
                             onChange={e => setUsername(e.target.value)}
                             className={`mt-5 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="아이디를 입력해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
                     <label>
@@ -76,6 +90,7 @@ const Signup = () => {
                             onChange={e => setEmail(e.target.value)}
                             className={`mt-5 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="이메일을 입력해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
                         <input
@@ -84,6 +99,7 @@ const Signup = () => {
                             onChange={e => setPassword(e.target.value)}
                             className={`mt-5 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="비밀번호를 입력해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
                     <label>
@@ -93,6 +109,7 @@ const Signup = () => {
                             onChange={e => setConfirmPassword(e.target.value)}
                             className={`mt-5 px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-72 sm:text-sm focus:ring-1 rounded-lg`}
                             placeholder="비밀번호를 확인해주세요."
+                            onKeyPress={handleKeyPress}
                         />
                     </label>
 

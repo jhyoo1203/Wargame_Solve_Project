@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
+import Category from "./category";
+import Topuser from "./top_user";
+import Userinformation from "./user_information";
+
 const Rank = () => {
     const { pathname } = useLocation();
 
@@ -10,10 +14,13 @@ const Rank = () => {
 
     return(
         <div>
-            <div className="flex justify-center items-center h-screen bg-blue-200">
-                <div className="text-center">
-                    <h1 className="text-5xl font-bold">Welcome to Team 0100!</h1>
-                    <p className="text-xl mt-3">This is the Ranking of Team 0100's web application.</p>
+            <div className="flex justify-center">
+                <div className="max-w-[30%]">
+                    <Category />
+                </div>
+                <div className="max-w-[70%]">
+                    <Topuser />
+                    <Userinformation />
                 </div>
             </div>
         </div>

@@ -50,6 +50,11 @@ public class ProblemService {
             return null;
         }
     }
+
+    public byte[] downloadFile(String fileName) throws IOException {
+        Path filePath = Paths.get("src/main/resources/static/uploads/", fileName);
+        return Files.readAllBytes(filePath);
+    }
     
     @Cacheable(value = "ProblemAllCache")
     public List<ProblemDTO> getAllProblems() {

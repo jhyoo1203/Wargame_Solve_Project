@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 const ProblemDetail = () => {
     const { problemId } = useParams();
@@ -13,6 +14,18 @@ const ProblemDetail = () => {
             setProblem(response.data);
         });
     }, [problemId]);
+
+    const handleFileDownload = (problem) => {
+        axios({
+            url: `http://localhost:8080/problems/download/${problem}`,
+            method: 'GET',
+            responseType: 'blob',
+        }).then((response) => {
+            saveAs(new Blob([response.data]), problem);
+        });
+    }
+    
+    
 
     const getBgColor = (level) => {
         if (level >= 1 && level <= 3) {
@@ -38,7 +51,10 @@ const ProblemDetail = () => {
     const handleAnswerChange = (event) => {
         setUserAnswer(event.target.value);
     }
-
+    
+    const getFileName = (filePath) => {
+        return filePath.split('\\').pop();
+    }    
 
     if (!problem) {
         return <div>Loading...</div>;
@@ -58,6 +74,12 @@ const ProblemDetail = () => {
                 <div className='mt-5'>문제 URL: <a href={`${problem.problemUrl}`} className='text-blue-600 hover:underline'>{problem.problemUrl}</a></div>
                 <div className="mt-5">문제 설명</div>
                 <div className="mt-2">{problem.description}</div>
+                <div className="mt-5">
+                    첨부파일: 
+                    <button onClick={() => handleFileDownload(getFileName(problem.filePath))} className='text-blue-600 hover:underline'>
+                        {getFileName(problem.filePath)}
+                    </button>
+                </div>
             </div>
             <div className='mx-10 border-2 border-gray-300'></div>
             <form onSubmit={handleSubmit} className='flex px-32 py-10 justify-center'>

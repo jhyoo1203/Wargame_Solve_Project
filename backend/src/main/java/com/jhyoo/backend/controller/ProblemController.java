@@ -1,6 +1,10 @@
 package com.jhyoo.backend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,6 +12,8 @@ import com.jhyoo.backend.entity.Problem;
 import com.jhyoo.backend.service.ProblemService;
 
 import lombok.RequiredArgsConstructor;
+
+import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,6 +41,20 @@ public class ProblemController {
         );
     }
 
+    @GetMapping("/download/{problem}")
+    public ResponseEntity<byte[]> downloadFile(@PathVariable("problem") String fileName) {
+        try {
+            byte[] fileContent = problemService.downloadFile(fileName);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment", fileName);
+            headers.setContentLength(fileContent.length);
+            return new ResponseEntity<>(fileContent, headers, HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @RequestMapping("/all")
     public Object getAllProblems() {

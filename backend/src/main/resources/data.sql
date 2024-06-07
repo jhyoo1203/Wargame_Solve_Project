@@ -15,18 +15,18 @@ VALUES
 
 
 -- 문제 데이터 삽입
-INSERT INTO problems (problem_id, title, level, field, description, problem_url, creator_icon_url, creator_nickname, solutions_count)
+INSERT INTO problems (problem_id, title, level, field, description, problem_url, creator_icon_url, creator_nickname, solutions_count, answer)
 VALUES
-    (11, 'Problem 1', 2, '리버싱', 'Description of Problem 1', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Reinose', 3),
-    (12, 'Problem 2', 3, '웹 해킹', 'Description of Problem 2', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Sechack', 2),
-    (13, 'Problem 3', 1, '리버싱', 'Description of Problem 3', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'G0RiyA', 1),
-    (14, 'Problem 4', 6, '웹 해킹', 'Description of Problem 4', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Cronus', 2),
-    (15, 'Problem 5', 3, '리버싱', 'Description of Problem 5', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'ainsetin', 2),
-    (16, 'Problem 6', 7, '웹 해킹', 'Description of Problem 6', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'snwo', 1),
-    (17, 'Problem 7', 2, '리버싱', 'Description of Problem 7', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', '2dedce', 1),
-    (18, 'Problem 8', 3, '웹 해킹', 'Description of Problem 8', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user8', 1),
-    (19, 'Problem 9', 9, '리버싱', 'Description of Problem 9', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user9', 1),
-    (20, 'Problem 10', 2, '웹 해킹', 'Description of Problem 10', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user10', 1);
+    (11, 'Problem 1', 2, '리버싱', 'Description of Problem 1', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Reinose', 3, 'Answer'),
+    (12, 'Problem 2', 3, '웹 해킹', 'Description of Problem 2', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Sechack', 2, 'Answer'),
+    (13, 'Problem 3', 1, '리버싱', 'Description of Problem 3', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'G0RiyA', 1, 'Answer'),
+    (14, 'Problem 4', 6, '웹 해킹', 'Description of Problem 4', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'Cronus', 2, 'Answer'),
+    (15, 'Problem 5', 3, '리버싱', 'Description of Problem 5', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'ainsetin', 2, 'Answer'),
+    (16, 'Problem 6', 7, '웹 해킹', 'Description of Problem 6', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'snwo', 1, 'Answer'),
+    (17, 'Problem 7', 2, '리버싱', 'Description of Problem 7', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', '2dedce', 1, 'Answer'),
+    (18, 'Problem 8', 3, '웹 해킹', 'Description of Problem 8', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user8', 1, 'Answer'),
+    (19, 'Problem 9', 9, '리버싱', 'Description of Problem 9', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user9', 1, 'Answer'),
+    (20, 'Problem 10', 2, '웹 해킹', 'Description of Problem 10', 'https://www.acmicpc.net/favicon.ico', 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png', 'user10', 1, 'Answer');
 
 -- 문제 풀이 데이터 삽입
 INSERT INTO solutions (solution_id, problem_id, user_id, date_submitted, solution_text)

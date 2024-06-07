@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const CreateProblem = () => {
     const levels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
     const fields = ["시스템 해킹", "리버싱", "웹해킹", "암호학", "포렌식", "클라우드", "Web3", "기타"];
+    const [file, setFile] = useState(null);
 
     const { user } = useSelector(state => state.user);
     const { pathname } = useLocation();
@@ -31,33 +32,50 @@ const CreateProblem = () => {
         if (levelNum >= 9 && levelNum <= 10) return isSelected ? 'bg-red-600 text-white shadow-md' : 'bg-red-300 text-white border-white';
     }
 
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        if (!title || !url || !description || !answer) {
+    
+        if (!title || !description || !answer || (["시스템 해킹", "리버싱", "암호학", "포렌식", "기타"].includes(selectedField) && !file)) {
             alert("모든 항목을 입력해주세요.");
             return;
         }
-
+    
+        const problem = {
+            title,
+            description,
+            level: selectedLevel,
+            field: selectedField,
+            creatorNickname: user.nickname,
+            answer,
+            problemUrl: url
+        };
+    
+        const formData = new FormData();
+        formData.append("problem", JSON.stringify(problem));
+        if (file) {
+            formData.append('file', file);
+        }
+    
         try {
-            const response = await axios.post('http://localhost:8080/problems/create', {
-                title,
-                problemUrl: url,
-                description,
-                level: selectedLevel,
-                field: selectedField,
-                creatorNickname: user.nickname,
-                answer
+            const response = await axios.post('http://localhost:8080/problems/create', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
-
+    
             console.log(response.data);
-
+    
             alert("문제가 성공적으로 출제되었습니다.");
             navigate('/wargame');
         } catch (error) {
             console.error(error);
         }
     };
+    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -101,18 +119,28 @@ const CreateProblem = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="flex mt-10">
-                            <p className="mt-1 font-bold text-lg text-black w-12">URL</p>
-                            <label>
+                        {["시스템 해킹", "리버싱", "암호학", "포렌식", "기타"].includes(selectedField) && (
+                            <div className="flex mt-10">
+                                <p className="mt-1 font-bold text-lg text-black w-12">파일</p>
+                                <label>
+                                    <input
+                                        type="file"
+                                        onChange={handleFileChange}
+                                        className={`px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-[253px] sm:text-sm focus:ring-1 rounded-lg`}
+                                    />
+                                </label>
+                            </div>
+                        )}
+                        {!["시스템 해킹", "리버싱", "암호학", "포렌식", "기타"].includes(selectedField) && (
+                            <div className="flex mt-10">
+                                <p className="mt-1 font-bold text-lg text-black w-12">URL</p>
                                 <input
                                     type="text"
-                                    name="name"
                                     onChange={e => setUrl(e.target.value)}
                                     className={`px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-[253px] sm:text-sm focus:ring-1 rounded-lg`}
-                                    placeholder="문제 URL을 입력해주세요."
                                 />
-                            </label>
-                        </div>
+                            </div>
+                        )}
                         <div className="flex mt-10">
                             <p className="mt-1 font-bold text-lg text-black w-12">설명</p>
                             <label>

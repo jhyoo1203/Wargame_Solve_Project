@@ -2,6 +2,7 @@ package com.jhyoo.backend.service;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhyoo.backend.dto.ProblemDTO;
 import com.jhyoo.backend.entity.Problem;
@@ -10,6 +11,10 @@ import com.jhyoo.backend.repository.ProblemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +23,7 @@ import java.util.stream.Collectors;
 public class ProblemService {
     private final ProblemRepository problemRepository;
 
-    public Problem createProblem(String title, String description, String problemUrl, String field, int level, String nickname, String answer) {
+    public Problem createProblem(String title, String description, String problemUrl, String field, int level, String nickname, String answer, String filePath) {
         Problem problem = new Problem();
         problem.setTitle(title);
         problem.setDescription(description);
@@ -29,8 +34,21 @@ public class ProblemService {
         problem.setCreatorNickname(nickname);
         problem.setSolutionsCount(0);
         problem.setAnswer(answer);
+        problem.setFilePath(filePath);
         this.problemRepository.save(problem);
         return problem;
+    }
+
+    public String handleFileUpload(MultipartFile file) {
+        try {
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get("src/main/resources/static/uploads/" + file.getOriginalFilename());
+            Files.write(path, bytes);
+            return path.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     
     @Cacheable(value = "ProblemAllCache")
@@ -67,6 +85,7 @@ public class ProblemService {
                 .creatorNickname(problem.getCreatorNickname())
                 .solutionsCount(problem.getSolutionsCount())
                 .answer(problem.getAnswer())
+                .filePath(problem.getFilePath())
                 .build();
     }
 }

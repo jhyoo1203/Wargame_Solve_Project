@@ -1,4 +1,5 @@
 package com.jhyoo.backend.entity;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,4 +40,7 @@ public class Problem {
 
     @Column(name="solutions_count")
     private int solutionsCount;
+
+    @Column(name="file_path")
+    private String filePath;
 }

@@ -28,6 +28,9 @@ public class Problem {
     @Column(name="description")
     private String description;
 
+    @Column(name="answer")
+    private String answer;
+
     @Column(name="creator_icon_url")
     private String creatorIconUrl;
 

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class ProblemService {
     private final ProblemRepository problemRepository;
 
-    public Problem createProblem(String title, String description, String problemUrl, String field, int level, String nickname) {
+    public Problem createProblem(String title, String description, String problemUrl, String field, int level, String nickname, String answer) {
         Problem problem = new Problem();
         problem.setTitle(title);
         problem.setDescription(description);
@@ -28,6 +28,7 @@ public class ProblemService {
         problem.setCreatorIconUrl("https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png");
         problem.setCreatorNickname(nickname);
         problem.setSolutionsCount(0);
+        problem.setAnswer(answer);
         this.problemRepository.save(problem);
         return problem;
     }
@@ -65,6 +66,7 @@ public class ProblemService {
                 .creatorIconUrl(problem.getCreatorIconUrl())
                 .creatorNickname(problem.getCreatorNickname())
                 .solutionsCount(problem.getSolutionsCount())
+                .answer(problem.getAnswer())
                 .build();
     }
 }

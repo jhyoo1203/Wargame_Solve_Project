@@ -20,7 +20,7 @@ public class ProblemController {
 
     @PostMapping("/create")
     public Object createProblem(@RequestBody Problem problemDto) {
-        return problemService.createProblem(problemDto.getTitle(), problemDto.getDescription(), problemDto.getProblemUrl(), problemDto.getField(), problemDto.getLevel(), problemDto.getCreatorNickname());
+        return problemService.createProblem(problemDto.getTitle(), problemDto.getDescription(), problemDto.getProblemUrl(), problemDto.getField(), problemDto.getLevel(), problemDto.getCreatorNickname(), problemDto.getAnswer());
     }
 
     @RequestMapping("/all")

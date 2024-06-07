@@ -5,6 +5,8 @@ import axios from 'axios';
 const ProblemDetail = () => {
     const { problemId } = useParams();
     const [problem, setProblem] = useState(null);
+    const [userAnswer, setUserAnswer] = useState('');
+    const [result, setResult] = useState('');
     
     useEffect(() => {
         axios.get(`http://localhost:8080/problems/${problemId}`).then((response) => {
@@ -24,12 +26,26 @@ const ProblemDetail = () => {
         }
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (userAnswer === problem.answer) {
+            setResult('맞았습니다!');
+        } else {
+            setResult('틀렸습니다!');
+        }
+    }
+
+    const handleAnswerChange = (event) => {
+        setUserAnswer(event.target.value);
+    }
+
+
     if (!problem) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div className='px-32 py-10'>
+        <div className='flex px-32 py-10 justify-center'>
             <div className="mt-5 text-lg">
                 <div className="flex">
                     <div className={`w-5 px-1 text-center rounded-lg text-white ${getBgColor(problem.level)}`}>{problem.level}</div>
@@ -43,6 +59,14 @@ const ProblemDetail = () => {
                 <div className="mt-5">문제 설명</div>
                 <div className="mt-2">{problem.description}</div>
             </div>
+            <div className='mx-10 border-2 border-gray-300'></div>
+            <form onSubmit={handleSubmit} className='flex px-32 py-10 justify-center'>
+                <div className='flex flex-col'>
+                    <input type='text' value={userAnswer} onChange={handleAnswerChange} className='w-96 p-3 h-10 border-2 border-gray-300 rounded-lg' placeholder='답안을 입력하세요.' />
+                    <button className='w-96 h-10 mt-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg'>제출</button>
+                    <div className={`mt-2 text-xl font-bold text-center ${result==="맞았습니다!" ? "text-blue-500" : "text-red-500"}`}>{result}</div>
+                </div>
+            </form>
         </div>
     );
 };

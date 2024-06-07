@@ -17,8 +17,9 @@ public class ProblemDTO {
     private String creatorIconUrl;
     private String creatorNickname;
     private int solutionsCount;
+    private String answer;
     
-    public ProblemDTO(Long problemId, int level, String title, String description, String problemUrl, String field, String creatorIconUrl, String creatorNickname, int solutionsCount) {
+    public ProblemDTO(Long problemId, int level, String title, String description, String problemUrl, String field, String creatorIconUrl, String creatorNickname, int solutionsCount, String answer) {
         this.problemId = problemId;
         this.level = level;
         this.title = title;
@@ -28,6 +29,7 @@ public class ProblemDTO {
         this.creatorIconUrl = creatorIconUrl;
         this.creatorNickname = creatorNickname;
         this.solutionsCount = solutionsCount;
+        this.answer = answer;
     }
 }
 

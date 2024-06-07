@@ -20,6 +20,7 @@ const CreateProblem = () => {
     const [description, setDescription] = useState('');
     const [selectedLevel, setSelectedLevel] = useState(levels[0]);
     const [selectedField, setSelectedField] = useState(fields[0]);
+    const [answer, setAnswer] = useState('');
 
     const getLevelColor = (level, isSelected) => {
         if (level === "모든 난이도") return isSelected ? 'border-blue-400 text-blue-400' : 'border-gray-400 text-gray-400';
@@ -33,8 +34,8 @@ const CreateProblem = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!title || !url || !description) {
-            alert("제목, URL, 설명을 모두 입력해주세요.");
+        if (!title || !url || !description || !answer) {
+            alert("모든 항목을 입력해주세요.");
             return;
         }
 
@@ -46,6 +47,7 @@ const CreateProblem = () => {
                 level: selectedLevel,
                 field: selectedField,
                 creatorNickname: user.nickname,
+                answer
             });
 
             console.log(response.data);
@@ -120,6 +122,18 @@ const CreateProblem = () => {
                                     onChange={e => setDescription(e.target.value)}
                                     className={`px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-[253px] sm:text-sm focus:ring-1 rounded-lg`}
                                     placeholder="문제 설명을 입력해주세요."
+                                />
+                            </label>
+                        </div>
+                        <div className="flex mt-10">
+                            <p className="mt-1 font-bold text-lg text-black w-12">정답</p>
+                            <label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={e => setAnswer(e.target.value)}
+                                    className={`px-3 py-2 bg-white border focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-[253px] sm:text-sm focus:ring-1 rounded-lg`}
+                                    placeholder="문제 정답을 입력해주세요."
                                 />
                             </label>
                         </div>

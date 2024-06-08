@@ -20,6 +20,7 @@ public class UserService {
 
     private final String DEFAULT_ACHIEVEMENT = "뉴비";
     private final int DEFAULT_SCORE = 0;
+    private final String DEFAULT_ICON_URL = "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png";
 
     public User createUser(String username, String email, String nickname, String name, String password) {
         User user = new User();
@@ -30,6 +31,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(password));
         user.setAchievement(DEFAULT_ACHIEVEMENT);
         user.setScore(DEFAULT_SCORE);
+        user.setIconUrl(DEFAULT_ICON_URL);
         this.userRepository.save(user);
         return user;
     }

@@ -16,7 +16,7 @@ const Wargame = () => {
 
     return (
         <div>
-            <div className="flex justify-center">
+            <div className="flex justify-center h-screen">
                 <div className="max-w-[800px]">
                     <Categories />
                     <div className="mt-5 w-full border-t-2 border-slate-300"></div>

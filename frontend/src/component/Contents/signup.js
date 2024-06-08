@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import apiClient from "api";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -23,7 +23,7 @@ const Signup = () => {
             return;
         }
 
-        axios.post('http://localhost:8080/users/signup', {
+        apiClient.post('/users/signup', {
             name: name,
             nickname: nickname,
             username: username,

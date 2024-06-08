@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from 'api';
 import { saveAs } from 'file-saver';
 
 const ProblemDetail = () => {
@@ -10,14 +10,14 @@ const ProblemDetail = () => {
     const [result, setResult] = useState('');
     
     useEffect(() => {
-        axios.get(`http://localhost:8080/problems/${problemId}`).then((response) => {
+        apiClient.get(`/problems/${problemId}`).then((response) => {
             setProblem(response.data);
         });
     }, [problemId]);
 
     const handleFileDownload = (problem) => {
-        axios({
-            url: `http://localhost:8080/problems/download/${problem}`,
+        apiClient({
+            url: `/problems/download/${problem}`,
             method: 'GET',
             responseType: 'blob',
         }).then((response) => {

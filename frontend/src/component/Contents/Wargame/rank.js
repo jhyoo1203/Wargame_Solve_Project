@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import apiClient from "api";
 
 const Rank = () => {
     const [users, setUsers] = React.useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/users/all").then((response) => {
+        apiClient.get("/users/all").then((response) => {
             setUsers(response.data);
         });
     }, []);

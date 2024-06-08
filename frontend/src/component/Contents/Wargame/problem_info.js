@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import apiClient from "api";
 import { Link } from 'react-router-dom';
 
 const ProblemInfo = () => {
     const [problems, setProblems] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/problems/all").then((response) => {
+        apiClient.get("/problems/all").then((response) => {
             setProblems(response.data);
         });
     }, []);

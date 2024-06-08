@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "api";
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -61,7 +61,7 @@ const CreateProblem = () => {
         }
     
         try {
-            const response = await axios.post('http://localhost:8080/problems/create', formData, {
+            const response = await apiClient.post('/problems/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

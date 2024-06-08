@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import axios from "axios";
 import Google from 'image/Google.png';
 import { useDispatch } from "react-redux";
 import { setUser } from '../../module/user';
+import apiClient from "api";
 
 const LoginPage = () => {
   const { pathname } = useLocation();
@@ -42,8 +42,8 @@ const LoginPage = () => {
       return;
     }
 
-    axios
-      .post('http://localhost:8080/login', {
+    apiClient
+      .post('/login', {
         username: username,
         password: password,
       })
